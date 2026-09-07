@@ -1,0 +1,2 @@
+# Modeling-of-Photovoltaic-Cells-with-Simulation-Diagnostics-and-Monitoring
+This is a personal project that aims to eventually build a homemade photovoltaic monitoring and diagnostics systems for personal use. Inspired by my classes in photovoltaics and optoelectronics, I am currently exploring options to have a centralized photovoltaic system for my domicile, reducing my carbon footprint with my own hands
