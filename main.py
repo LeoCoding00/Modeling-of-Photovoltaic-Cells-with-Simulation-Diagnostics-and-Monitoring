@@ -7,7 +7,7 @@ from visualization import iv_curve,pv_curve
 
 def main():
     print('PV Monitoring mock-up project v1.0')
-    print('Author name')
+    print('Author Joel Leandro Gomez Quintero')
     print(datetime.date.today())
     print("Si cell 1")
     env1=environment.Environment(26,500)

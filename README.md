@@ -1,2 +1,13 @@
 # Modeling-of-Photovoltaic-Cells-with-Simulation-Diagnostics-and-Monitoring
 This is a personal project that aims to eventually build a homemade photovoltaic monitoring and diagnostics systems for personal use. Inspired by my classes in photovoltaics and optoelectronics, I am currently exploring options to have a centralized photovoltaic system for my domicile, reducing my carbon footprint with my own hands
+
+## 1. Main File
+
+Currently the main file supports the creation of PV cells, there are two models:
+
+**Environmental model** Temperature and irradiation conditions
+**Cell model** Based on the environmental model, create a Si PV Cell
+
+## 2. Physics model
+
+To make our PV cells as accurate as possible, the single-diode model is used, the **I-V** and **P-V** characteristics are found employing numerical methods (bisection and newton-raphson) 
