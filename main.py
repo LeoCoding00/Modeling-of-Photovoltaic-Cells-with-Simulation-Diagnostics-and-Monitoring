@@ -22,13 +22,21 @@ def main():
     print(f"Ideality factor:{celda1.n}")
     
     print("Physics model:")
-    print(f"Voc={celda1.Voc}")
-    print(f"Isc={celda1.Isc}")
+    print(f"Voc={celda1.Voc:.3f}")
+    print(f"Isc={celda1.Isc:.3f}")
     c1_voltages=[]
     c1_currents=[]
     for i in range(1,101):
         c1_voltages.append(celda1.Voc*i/100)
         c1_currents.append(celda1.find_current(celda1.Voc*i/100))
+    c1_power=[V*I for V,I in zip(c1_voltages,c1_currents)]
+    Pmax=max(c1_power)
+    mpp=c1_power.index(Pmax)
+    Vmax=c1_voltages[mpp]
+    Imax=c1_currents[mpp]
+    print(f"Maximum Power MPP:\n{Vmax:.3f}V\n{Imax:.3f}A\n{Pmax:.3f}W")
+    print(f"FF={Pmax/(celda1.Voc*celda1.Isc):.3f}\nEfficiency={Pmax/(celda1.area*celda1.enviro.irradiance):.3f}")
+    
     iv_curve.plot_iv(celda1.Voc,celda1.Isc,c1_voltages,c1_currents)
     pv_curve.plot_pv(celda1.Voc,celda1.Isc,c1_voltages,c1_currents)
         
@@ -49,13 +57,13 @@ def main():
     print(f"Isc={celda2.Isc}")
     c2_voltages=[]
     c2_currents=[]
+    c2_power=[]
     for i in range(1,101):
         c2_voltages.append(celda2.Voc*i/100)
         c2_currents.append(celda2.find_current(celda2.Voc*i/100))
     iv_curve.plot_iv(celda2.Voc,celda2.Isc,c2_voltages,c2_currents)  
     pv_curve.plot_pv(celda2.Voc,celda2.Isc,c2_voltages,c2_currents)
-    print("vscodenotcommiting?")  
-    
+        
     
 if __name__=="__main__":
     main()
