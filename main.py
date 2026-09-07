@@ -54,7 +54,7 @@ def main():
         c2_currents.append(celda2.find_current(celda2.Voc*i/100))
     iv_curve.plot_iv(celda2.Voc,celda2.Isc,c2_voltages,c2_currents)  
     pv_curve.plot_pv(celda2.Voc,celda2.Isc,c2_voltages,c2_currents)
-    print("sup")  
+    print("vscodenotcommiting?")  
     
     
 if __name__=="__main__":
