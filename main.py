@@ -5,6 +5,7 @@ import datetime
 from modelos.environment import Environment as evn
 from modelos.cell import Celda
 from modelos.environment_module import EnvironmentMod as evn_m
+from modelos.module import Module as PV_Module
 from visualization import iv_curve,pv_curve
 
 def main():
@@ -15,8 +16,12 @@ def main():
     env1=evn(25,100)
     print(f"Nominal values:\nT={env1.temp}C\nG={env1.irradiance}W/m2")
     string1=evn_m()
-    print(string1.temperatures)
-    print(string1.irradiances)
+    print("Modulo 1")
+    modulo1=PV_Module(string1.environments)
+    print(f"Module 1:\nIsc={modulo1.Isc:.3f}A\nVoc={modulo1.Voc:.2f}V")
+    for (i,celda) in enumerate (modulo1.celdas):
+        print(f"Celda {i+1}:\nIph={celda.Iph:.3f}A\nI0={celda.I0*(10**9):.3f}nA\nVt={celda.Vt*1000:.2f}mV")
+        
     print("Environment 2")
     env2=evn(19,500)
     print(f"Nominal values:\nT={env2.temp}C\nG={env2.irradiance}W/m2")

@@ -94,3 +94,13 @@ class Celda():
             V_seed=Voc
             Voc=V_seed-(self.equation_Voc(V_seed)/self.derivative_Voc(V_seed))
         return Voc
+    def equation_v(self,I,Vk):
+        return(self.Iph-(Vk/self.Rsh)+(I*(self.Rs/self.Rsh-1))-(self.I0*(exp((Vk+I*self.Rs)/self.n*self.self.Vt)-1)))
+    def derivative_v(self,I,Vk):
+        return ((-1/self.Rsh)-(self.I0*Vk*exp((Vk+self.Rs*I)/self.n*self.Vt)/(self.n*self.Vt)))
+    def find_voltage(self,I,V_seed=0.7):
+        V=V_seed-(self.equation_v(I,V_seed)/self.derivative_v(I,V_seed))
+        while (abs(V-V_seed)>1e-6):
+            V_seed=V
+            V=V_seed-(self.equation_v(I,V_seed)/self.derivative_v(I,V_seed))
+        return V
