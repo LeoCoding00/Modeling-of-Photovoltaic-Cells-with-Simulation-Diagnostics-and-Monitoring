@@ -9,11 +9,11 @@ class Celda():
     Fill factor=0.87
     """
     #Environmental conditions
-    G_ref=1000#W/m2
-    T_ref=25+273.15#C
+    G_ref=1000#W/m2 #reference irradiation for modeling of PC
+    T_ref=25+273.15#C #reference temperature for modeling of I0 reverse saturation current
     
     #Reference cell parameters
-    Iph_ref=4#A
+    Iph_ref=4#A for normal conditions
     I0_ref=3e-9#A saturation current (leakage)
     
     #Physical parameters
@@ -28,7 +28,7 @@ class Celda():
     Eg=1.12#Si bandgap
     
     def __init__(self, enviro):
-        self.enviro=enviro
+        self.enviro=enviro#receive a 
         self.T=self.enviro.temp+273.15
         self.calculate_parameters()
         
