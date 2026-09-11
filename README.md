@@ -14,4 +14,4 @@ To make our PV cells as accurate as possible, the single-diode model is used, wh
 
 $I=I_{ph}-I_{0}*(e^{q*(V+I_{Rs})/nkT})-(V+IR_{s})/R_{sh}.
 
-The cells are modeled individually and a given number of them can be used to form a complete PV Module. Some stochastic variation is added in the environmental conditions to account for natural variations of temperature and irradiation in the surface of the cell; this variation follows a normal distribution but it can be tuned to account for different effects in the cells
+The cells are modeled individually and a given number of them can be used to form a complete PV Module. Some stochastic variation is added in the environmental conditions to account for natural variations of temperature and irradiation in the surface of the cell; this variation follows a normal distribution but it can be tuned to account for different effects in the cells.
