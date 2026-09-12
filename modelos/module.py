@@ -1,4 +1,5 @@
 from modelos.cell import Celda
+import numpy as np 
 
 class Module():
     """Adds a PV module composed of several cells with stochastic modeling.
@@ -44,3 +45,39 @@ class Module():
         for celda in self.celdas:
             Voc=Voc+celda.Voc
         return Voc
+    def find_voltage(self,I):
+        """Approximate the operation voltage of the entire module by adding, in series,
+        the voltage of each cell of the module
+
+        Args:
+            I (int): Operation current in [A]
+            
+        Returns:
+            V (int): The approximate voltage in [V] for the given operation current
+        """
+        
+        V=0
+        for celda in self.celdas:
+            V_cell=celda.find_voltage(I,V_seed=celda.Voc)
+            V=V+V_cell
+        return V
+    
+    def find_characteristics(self,step=0.001):
+        """Approximates the I-V and P-V characteristics of the module. The characteristics are calculated
+        between 0 and the short circuit current of the module
+
+        Args:
+            step (float, optional): Describes the granularity of the numerical simulation, the step
+            size between two consecutive points in I-V and P-V curves. Defaults to 0.001, which represents 1mA.
+            
+        Returns:
+            (voltage,current,power) (tuple, float): A tuple with three positions
+            First is voltage in [V]
+            second is current in [A]
+            third is power in [W]
+        """
+        I=np.arange(0,self.Isc,step)
+        V=np.array([self.find_voltage(i_point) for i_point in I])
+        P=I*V
+        
+        return (V,I,P)

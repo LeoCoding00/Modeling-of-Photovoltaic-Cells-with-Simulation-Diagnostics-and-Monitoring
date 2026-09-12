@@ -193,7 +193,7 @@ class Celda():
             int: f(I,Vk) solution for the evaluation function
         
         """
-        return(self.Iph-(Vk/self.Rsh)+(I*(self.Rs/self.Rsh-1))-(self.I0*(exp((Vk+I*self.Rs)/self.n*self.self.Vt)-1)))
+        return(self.Iph-(Vk/self.Rsh)+(I*(self.Rs/self.Rsh-1))-(self.I0*(exp((Vk+I*self.Rs)/(self.n*self.Vt))-1)))
     def derivative_v(self,I,Vk):
         """Find f'(I,Vk) for a given current of operation.
 
