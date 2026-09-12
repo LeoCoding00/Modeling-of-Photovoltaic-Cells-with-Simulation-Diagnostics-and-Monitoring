@@ -13,11 +13,10 @@ def main():
     print('Author Joel Leandro Gomez Quintero')
     print(datetime.date.today())
     print("Environment 1")
-    env1=evn(25,100)
+    env1=evn_m(27,1200)
     print(f"Nominal values:\nT={env1.temp}C\nG={env1.irradiance}W/m2")
-    string1=evn_m()
     print("Modulo 1")
-    modulo1=PV_Module(string1.environments)
+    modulo1=PV_Module(env1)
     print(f"Module 1:\nIsc={modulo1.Isc:.3f}A\nVoc={modulo1.Voc:.2f}V")
     for (i,celda) in enumerate (modulo1.celdas):
         print(f"Celda {i+1}:\nIph={celda.Iph:.3f}A\nI0={celda.I0*(10**9):.3f}nA\nVt={celda.Vt*1000:.2f}mV")

@@ -4,13 +4,13 @@ class Module():
     """Adds a PV module composed of several cells with stochastic modeling.
     """
         
-    def __init__(self,environments):
+    def __init__(self,environments_m):
         """Declaration of a PV module
 
         Args:
             environments (EnvironmentMod): An environment model with N samples defines a PV module with N cells
         """
-        self.environments=environments
+        self.environments=environments_m.environments
         self.celdas=[]
         self.add_cells()#creates and adds all cells in the list celdas
         self.Isc=self.calc_Isc()#Isc of the module
